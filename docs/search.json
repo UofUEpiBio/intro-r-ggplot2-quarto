@@ -1,0 +1,254 @@
+[
+  {
+    "objectID": "02-quarto.html",
+    "href": "02-quarto.html",
+    "title": "PHS 7045 Advanced ProgrammingExample with Quarto",
+    "section": "",
+    "text": "These are plain-text (not binary) files\n\n\n---\ntitle: \"Hello World\"\nauthor: \"Truly Yours\"\ndate: \"`r Sys.Date()`\"\nformat: html\n---\n\n# First level header\n\n## Second level header\n\nSome text that goes along with the document\n\nCode chunks can have tags, like the one here\n\n\n```{r first-code-chunk}\nsqrt(pi)\n```\n\n\nAnd also, they can have options. For example, if you don't want the source code\nto be printed out, you add the option `echo: false` as in the following code\nchunk\n\n\n```{r second-code-chunk}\n#| echo: false\nplot(USArrests)\n```\nThe University of Utah"
+  },
+  {
+    "objectID": "02-quarto.html#quarto-files",
+    "href": "02-quarto.html#quarto-files",
+    "title": "PHS 7045 Advanced ProgrammingExample with Quarto",
+    "section": "",
+    "text": "These are plain-text (not binary) files\n\n\n---\ntitle: \"Hello World\"\nauthor: \"Truly Yours\"\ndate: \"`r Sys.Date()`\"\nformat: html\n---\n\n# First level header\n\n## Second level header\n\nSome text that goes along with the document\n\nCode chunks can have tags, like the one here\n\n\n```{r first-code-chunk}\nsqrt(pi)\n```\n\n\nAnd also, they can have options. For example, if you don't want the source code\nto be printed out, you add the option `echo: false` as in the following code\nchunk\n\n\n```{r second-code-chunk}\n#| echo: false\nplot(USArrests)\n```"
+  },
+  {
+    "objectID": "02-quarto.html#main-components-of-a-qmd-file",
+    "href": "02-quarto.html#main-components-of-a-qmd-file",
+    "title": "PHS 7045 Advanced ProgrammingExample with Quarto",
+    "section": "Main components of a qmd file",
+    "text": "Main components of a qmd file\n\n\nThe header: Information about the document in yaml format\n\n\n---\ntitle: \"Hello World\"\nauthor: \"Truly Yours\"\ndate: \"`r Sys.Date()`\"\nformat: html\n---\n\n\nR code chunks (with options)\n\n\n\n```{r first-code-chunk}\nsqrt(pi)\n```\n\n\n\nR code chunks (without options)\n\n\n\n```{r second-code-chunk}\n#| echo: false\nplot(USArrests)\n```\n\n\n\n\n\n\n\nSome other options include:\n\ncache: Logical, when true saves the result of the code chunk so it doesn’t need to compute it every time (handy for time-consuming code!)\nmessages: Logical, when true it suppresses whatever message the R code in the chunk generates.\nfig.cap: Character vector. Specifies the title of plots generated within the chunk.\n\nMore here."
+  },
+  {
+    "objectID": "02-quarto.html#how-it-works",
+    "href": "02-quarto.html#how-it-works",
+    "title": "PHS 7045 Advanced ProgrammingExample with Quarto",
+    "section": "How it works",
+    "text": "How it works\n\n\n\n\nSource: Quarto website https://quarto.org/docs/faq/rmarkdown.html\n\nThe function quarto passes the qmd file to knitr\nknitr executes the R code (or whatever code is there) and creates an md file (markdown, not Rmarkdown)\nThen the md file is passed to pandoc, which ultimately compiles the document in the desired format as specified in the output option of the header."
+  },
+  {
+    "objectID": "02-quarto.html#quarto-supports-other-formats",
+    "href": "02-quarto.html#quarto-supports-other-formats",
+    "title": "PHS 7045 Advanced ProgrammingExample with Quarto",
+    "section": "Quarto supports other formats",
+    "text": "Quarto supports other formats\n\nThe following code chunk requires having the reticulate R package (R interface to Python)\n\n\n\n```{py some-py-code}\nprint \"Hello World\"\nimport this\n```\n\n\n\n\n\nHello World\n\n\nThe Zen of Python, by Tim Peters\n\nBeautiful is better than ugly.\nExplicit is better than implicit.\nSimple is better than complex.\nComplex is better than complicated.\nFlat is better than nested.\nSparse is better than dense.\nReadability counts.\nSpecial cases aren't special enough to break the rules.\nAlthough practicality beats purity.\nErrors should never pass silently.\nUnless explicitly silenced.\nIn the face of ambiguity, refuse the temptation to guess.\nThere should be one-- and preferably only one --obvious way to do it.\nAlthough that way may not be obvious at first unless you're Dutch.\nNow is better than never.\nAlthough never is often better than *right* now.\nIf the implementation is hard to explain, it's a bad idea.\nIf the implementation is easy to explain, it may be a good idea.\nNamespaces are one honking great idea -- let's do more of those!"
+  },
+  {
+    "objectID": "02-quarto.html#tables-with-quarto",
+    "href": "02-quarto.html#tables-with-quarto",
+    "title": "PHS 7045 Advanced ProgrammingExample with Quarto",
+    "section": "Tables with Quarto",
+    "text": "Tables with Quarto\n\nSuppose that we want to include the following data as a table part of our document\n\n\nCode\n# Loading the package\nlibrary(gapminder)\n\n# Calculating stats at the year level\nstats_by_year &lt;- gapminder %&gt;%\n  group_by(year) %&gt;%\n  summarise(\n    `Life Expectancy` = mean(lifeExp),\n    `Population`      = mean(pop),\n    `GDP pp`          = mean(gdpPercap)\n  ) %&gt;%\n  arrange(year)\n\nstats_by_year\n\n\n# A tibble: 12 × 4\n    year `Life Expectancy` Population `GDP pp`\n   &lt;int&gt;             &lt;dbl&gt;      &lt;dbl&gt;    &lt;dbl&gt;\n 1  1952              49.1  16950402.    3725.\n 2  1957              51.5  18763413.    4299.\n 3  1962              53.6  20421007.    4726.\n 4  1967              55.7  22658298.    5484.\n 5  1972              57.6  25189980.    6770.\n 6  1977              59.6  27676379.    7313.\n 7  1982              61.5  30207302.    7519.\n 8  1987              63.2  33038573.    7901.\n 9  1992              64.2  35990917.    8159.\n10  1997              65.0  38839468.    9090.\n11  2002              65.7  41457589.    9918.\n12  2007              67.0  44021220.   11680.\n\n\nThere are at least two ways of doing it\n\n\nTabulation with knitr\n\n\nThe knitr package provides the function kable to print tables.\nIt has the nice feature that you don’t need to be explicit about the format, i.e., it will automatically guess what type of document you are working with.\n\n\nCode\nknitr::kable(\n    head(stats_by_year),\n    caption = \"Year stats from the gapminder data\",\n    format.args = list(big.mark=\",\")\n    )\n\n\n\nYear stats from the gapminder data\n\n\nyear\nLife Expectancy\nPopulation\nGDP pp\n\n\n\n\n1,952\n49.05762\n16,950,402\n3,725.276\n\n\n1,957\n51.50740\n18,763,413\n4,299.408\n\n\n1,962\n53.60925\n20,421,007\n4,725.812\n\n\n1,967\n55.67829\n22,658,298\n5,483.653\n\n\n1,972\n57.64739\n25,189,980\n6,770.083\n\n\n1,977\n59.57016\n27,676,379\n7,313.166\n\n\n\n\n\nCheckout kableExtra which provides extensions to the kable function.\n\n\n\n\nTabulation with pander\n\n\nAnother (very cool) R package is pander\nIt provides helper functions to work with pandoc’s markdown format\nThis means that you don’t need to think about what is the final output format\n\nCode\npander::pandoc.table(\n  head(stats_by_year), \n  caption = \"Year stats from the gapminder data\"\n  )\n\n\nYear stats from the gapminder data\n\n\n\n\n\n\n\n\nyear\nLife Expectancy\nPopulation\nGDP pp\n\n\n\n\n1952\n49.06\n16950402\n3725\n\n\n1957\n51.51\n18763413\n4299\n\n\n1962\n53.61\n20421007\n4726\n\n\n1967\n55.68\n22658298\n5484\n\n\n1972\n57.65\n25189980\n6770\n\n\n1977\n59.57\n27676379\n7313"
+  },
+  {
+    "objectID": "02-quarto.html#regression-tables",
+    "href": "02-quarto.html#regression-tables",
+    "title": "PHS 7045 Advanced ProgrammingExample with Quarto",
+    "section": "Regression tables",
+    "text": "Regression tables\n\n\nThere are a lot of functions around to include regression output\nSuppose that we run the following models on the diamonds dataset\n\n\nCode\ndata(diamonds, package=\"ggplot2\")\n\n# Model 1\nmodel1 &lt;- lm(price ~ carat, data = diamonds)\nmodel2 &lt;- lm(price ~ carat + depth, data = diamonds)\nmodel3 &lt;- lm(price ~ carat + table, data = diamonds)\nmodel4 &lt;- lm(price ~ carat + depth + table, data = diamonds)\n\n# Let's put it all in a list to handle it together\nmodels &lt;- list(model1, model2, model3, model4)\n\n\nHow can we include these in our report/paper?\n\n\n\nRegression tables with texreg\n\n\nThe R package texreg\n\nCode\ntexreg::htmlreg(models, doctype=FALSE)\n\n\n\nStatistical models\n\n\n\n\n \n\n\nModel 1\n\n\nModel 2\n\n\nModel 3\n\n\nModel 4\n\n\n\n\n\n\n(Intercept)\n\n\n-2256.36***\n\n\n4045.33***\n\n\n1961.99***\n\n\n13003.44***\n\n\n\n\n \n\n\n(13.06)\n\n\n(286.21)\n\n\n(171.81)\n\n\n(390.92)\n\n\n\n\ncarat\n\n\n7756.43***\n\n\n7765.14***\n\n\n7820.04***\n\n\n7858.77***\n\n\n\n\n \n\n\n(14.07)\n\n\n(14.01)\n\n\n(14.22)\n\n\n(14.15)\n\n\n\n\ndepth\n\n\n \n\n\n-102.17***\n\n\n \n\n\n-151.24***\n\n\n\n\n \n\n\n \n\n\n(4.64)\n\n\n \n\n\n(4.82)\n\n\n\n\ntable\n\n\n \n\n\n \n\n\n-74.30***\n\n\n-104.47***\n\n\n\n\n \n\n\n \n\n\n \n\n\n(3.02)\n\n\n(3.14)\n\n\n\n\nR2\n\n\n0.85\n\n\n0.85\n\n\n0.85\n\n\n0.85\n\n\n\n\nAdj. R2\n\n\n0.85\n\n\n0.85\n\n\n0.85\n\n\n0.85\n\n\n\n\nNum. obs.\n\n\n53940\n\n\n53940\n\n\n53940\n\n\n53940\n\n\n\n\n\n\n***p &lt; 0.001; **p &lt; 0.01; *p &lt; 0.05\n\n\n\n\nIt also has the functions texreg, for LaTeX tables, and screenreg, for plaintext output\nThe problem, you have to be explicit in the type of table that you want to print\n\n\n\n\nRegression tables with memisc\n\n\nThe R package memisc\n\nCode\nlibrary(memisc)\ntab &lt;- mtable(\n  `Model 1` = model1,\n  `Model 2` = model2,\n  `Model 3` = model3,\n  `Model 4` = model4,\n  summary.stats=c(\"sigma\",\"R-squared\",\"F\",\"p\",\"N\")\n) %&gt;% write.mtable(file = stdout(), format = \"HTML\")\n\n\n\n\n\n\n\nModel 1\n\n\nModel 2\n\n\nModel 3\n\n\nModel 4\n\n\n\n\n(Intercept)\n\n\n−2256\n\n\n.\n\n\n361***\n\n\n4045\n\n\n.\n\n\n333***\n\n\n1961\n\n\n.\n\n\n992***\n\n\n13003\n\n\n.\n\n\n441***\n\n\n\n\n\n\n(13\n\n\n.\n\n\n055)\n\n\n(286\n\n\n.\n\n\n205)\n\n\n(171\n\n\n.\n\n\n811)\n\n\n(390\n\n\n.\n\n\n918)\n\n\n\n\ncarat\n\n\n7756\n\n\n.\n\n\n426***\n\n\n7765\n\n\n.\n\n\n141***\n\n\n7820\n\n\n.\n\n\n038***\n\n\n7858\n\n\n.\n\n\n771***\n\n\n\n\n\n\n(14\n\n\n.\n\n\n067)\n\n\n(14\n\n\n.\n\n\n009)\n\n\n(14\n\n\n.\n\n\n225)\n\n\n(14\n\n\n.\n\n\n151)\n\n\n\n\ndepth\n\n\n\n\n\n\n\n\n−102\n\n\n.\n\n\n165***\n\n\n\n\n\n\n\n\n−151\n\n\n.\n\n\n236***\n\n\n\n\n\n\n\n\n\n\n\n\n(4\n\n\n.\n\n\n635)\n\n\n\n\n\n\n\n\n(4\n\n\n.\n\n\n820)\n\n\n\n\ntable\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n−74\n\n\n.\n\n\n301***\n\n\n−104\n\n\n.\n\n\n473***\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n(3\n\n\n.\n\n\n018)\n\n\n(3\n\n\n.\n\n\n141)\n\n\n\n\nR-squared\n\n\n0\n\n\n.\n\n\n849\n\n\n0\n\n\n.\n\n\n851\n\n\n0\n\n\n.\n\n\n851\n\n\n0\n\n\n.\n\n\n854\n\n\n\n\nsigma\n\n\n1548\n\n\n.\n\n\n562\n\n\n1541\n\n\n.\n\n\n649\n\n\n1539\n\n\n.\n\n\n946\n\n\n1526\n\n\n.\n\n\n094\n\n\n\n\nF\n\n\n304050\n\n\n.\n\n\n906\n\n\n153634\n\n\n.\n\n\n765\n\n\n154034\n\n\n.\n\n\n567\n\n\n104890\n\n\n.\n\n\n460\n\n\n\n\np\n\n\n0\n\n\n.\n\n\n000\n\n\n0\n\n\n.\n\n\n000\n\n\n0\n\n\n.\n\n\n000\n\n\n0\n\n\n.\n\n\n000\n\n\n\n\nN\n\n\n53940\n\n\n\n\n\n\n53940\n\n\n\n\n\n\n53940\n\n\n\n\n\n\n53940\n\n\n\n\n\n\n\n\n\nSignificance: *** = p &lt; 0.001; ** = p &lt; 0.01; * = p &lt; 0.05"
+  },
+  {
+    "objectID": "02-quarto.html#plots-with-quarto",
+    "href": "02-quarto.html#plots-with-quarto",
+    "title": "PHS 7045 Advanced ProgrammingExample with Quarto",
+    "section": "Plots with Quarto",
+    "text": "Plots with Quarto\n\nIn the case of plots, these just work!\n\n\nCode\nggplot(diamonds, aes(x = carat, y = price, color=cut)) + \n  geom_point() +\n  ggtitle(\"Plots with Quarto just work\")"
+  },
+  {
+    "objectID": "01-r.html",
+    "href": "01-r.html",
+    "title": "Getting R",
+    "section": "",
+    "text": "To install R just follow the instructions available at http://cran.r-project.org\nThe University of Utah"
+  },
+  {
+    "objectID": "hello-world.html",
+    "href": "hello-world.html",
+    "title": "Hello World",
+    "section": "",
+    "text": "Some text that goes along with the document\nCode chunks can have tags, like the one here\n\nsqrt(pi)\n\n[1] 1.772454\n\n\nAnd also, they can have options. For example, if you don’t want the source code to be printed out, you add the option echo: false as in the following code chunk\nForeSITE"
+  },
+  {
+    "objectID": "hello-world.html#second-level-header",
+    "href": "hello-world.html#second-level-header",
+    "title": "Hello World",
+    "section": "",
+    "text": "Some text that goes along with the document\nCode chunks can have tags, like the one here\n\nsqrt(pi)\n\n[1] 1.772454\n\n\nAnd also, they can have options. For example, if you don’t want the source code to be printed out, you add the option echo: false as in the following code chunk"
+  },
+  {
+    "objectID": "03-ggplot2.html",
+    "href": "03-ggplot2.html",
+    "title": "Data visualization with ggplot2",
+    "section": "",
+    "text": "Let’s load in the gapminder dataset\n# load the tidyverse, and gapminder dataset using read_csv()\nThe ggplot2 library is loaded as a part of the tidyverse.\nThe University of Utah"
+  },
+  {
+    "objectID": "03-ggplot2.html#using-ggplot2-to-visualize-data",
+    "href": "03-ggplot2.html#using-ggplot2-to-visualize-data",
+    "title": "Data visualization with ggplot2",
+    "section": "Using ggplot2 to visualize data",
+    "text": "Using ggplot2 to visualize data\nLet’s create our first visualization using ggplot2’s “layered grammar of graphics”.\nTo create a ggplot figure, you start by creating an empty ggplot2 canvas, to which you provide your dataset\n\n# apply ggplot() to gapminder to create an empty ggplot2 canvas\n\nThen you add (with +) a “geom_” layer. For a scatterplot, this is geom_point().\nInside your geom layer, you need to specify the aesthetics using aes(), such as the x- and y-coordinates of the points.\n\n# Add a scatterplot layer of gdpPercap (x) against lifeExp (y)\n\n\nExercise\nCreate a ggplot scatterplot figure of population against life expectancy\nRecreate the previous plot using only the data from the year 2007.\nHint: you can pipe the gapminder object into the ggplot function."
+  },
+  {
+    "objectID": "03-ggplot2.html#defining-ggplot2-aesthetics",
+    "href": "03-ggplot2.html#defining-ggplot2-aesthetics",
+    "title": "Data visualization with ggplot2",
+    "section": "Defining ggplot2 aesthetics",
+    "text": "Defining ggplot2 aesthetics\nWe’ve seen the x and y point aesthetics, but there are many others too.\nFor example, you can specify the color of the points using the color aesthetic:\n\n# define gapminder_2007 and create a scatterplot of gdpPercap (x) against lifeExp (y)\n# where color is based on continent\n\nTo specify a global aesthetic that does not depend on a column in your data, you need to specify it outside the aes() function.\n\n# use gapminder_2007 to create a scatterplot of gdpPercap (x) against lifeExp (y)\n# where ALL points are colored blue\n\n\nExercise\nCopy your code above to create a scatterplot of gdpPercap (x) against lifeExp (y).\nSpecify the shape aesthetic of each point in two ways:\n\nProvide a different shape for each continent\n\n\nMake all points “square”\n\n\n\nSpecifying transparency\nSometimes when you have a lot of data points, you might want to add some transparency. You can do this using the alpha argument. alpha takes values between 0 and 1. alpha = 1 is not transparent at all, and alpha = 0 is completely transparent.\n\n# add transparency to the 2007 scatterplot of gdpPercap (x) against lifeExp (y)\n\n\n\nExercise\nRecreate the 2007 gdpPercap vs lifeExp plot in which you color by continent, size is determined by population, and the points have a transparency of 0.5."
+  },
+  {
+    "objectID": "03-ggplot2.html#line-plots",
+    "href": "03-ggplot2.html#line-plots",
+    "title": "Data visualization with ggplot2",
+    "section": "Line plots",
+    "text": "Line plots\nLet’s create a line plot of lifeExp by year for each country in the Americas continent.\n\n# create a line plot of lifeExp for each country in the Americas"
+  },
+  {
+    "objectID": "03-ggplot2.html#exercise-3",
+    "href": "03-ggplot2.html#exercise-3",
+    "title": "Data visualization with ggplot2",
+    "section": "Exercise",
+    "text": "Exercise\nCompute the average life expectancy for each continent & year, and then create a line plot of the average life expectancy for each continent over time."
+  },
+  {
+    "objectID": "03-ggplot2.html#boxplots",
+    "href": "03-ggplot2.html#boxplots",
+    "title": "Data visualization with ggplot2",
+    "section": "Boxplots",
+    "text": "Boxplots\nLet’s create some boxplots of lifeExp for each continent\n\n# create boxplots of the lifeExp for each continent"
+  },
+  {
+    "objectID": "03-ggplot2.html#histograms",
+    "href": "03-ggplot2.html#histograms",
+    "title": "Data visualization with ggplot2",
+    "section": "Histograms",
+    "text": "Histograms\nLet’s create a histogram of lifeExp\n\n# create a histogram of lifeExp"
+  },
+  {
+    "objectID": "03-ggplot2.html#bar-charts",
+    "href": "03-ggplot2.html#bar-charts",
+    "title": "Data visualization with ggplot2",
+    "section": "Bar charts",
+    "text": "Bar charts\nYou can create a count bar chart, by providing a categorical (character/factor) variable as your x-aesthetic to geom_bar()\n\n# create a bar chart of the continent *counts*\n\nIf you want to create bar charts where you specify the height of each bar based on a variable in your data, you need to use geom_col() instead of geom_bar().\n\n# create a bar chart of the average lifeExp for each continent using geom_col()"
+  },
+  {
+    "objectID": "03-ggplot2.html#layering-geom_layers",
+    "href": "03-ggplot2.html#layering-geom_layers",
+    "title": "Data visualization with ggplot2",
+    "section": "Layering geom_layers",
+    "text": "Layering geom_layers\nYou can add multiple layers of geoms in the same plot.\n\n# (from the exercise above) compute the average lifeExp for each continent-year\n# then create a line plot of the mean_life_exp over time for each \n# continent, and then add the points on top of the line"
+  },
+  {
+    "objectID": "03-ggplot2.html#getting-fancy-with-ggplot2",
+    "href": "03-ggplot2.html#getting-fancy-with-ggplot2",
+    "title": "Data visualization with ggplot2",
+    "section": "Getting fancy with ggplot2",
+    "text": "Getting fancy with ggplot2\n\nTransformations\nYou can apply log-scale transformations to your axis by adding a scale layer.\n\n# for the 2007 gdpPercap-lifeExp scatterplot colored by continent\n# add a log10 scale layer to the x-axis \n\n\n\nLabels\nYou can clean the labels of your figure using the labs() function\n\n# take your previous plot, add nice labels using `labs()`\n# save the ggplot2 object as my_scatter\n\n\n\nThemes\nYou can change the theme of your figure by adding a themes layer\n\n# try out a few themes layers: theme_classic(), theme_bw(), theme_dark()\n\n\n\nFaceted grids\nYou can create a grid of plots using facet_wrap().\n\n# create a grid of line plots of lifeExp over time for each country for each continent \n\n\n\nProject exercise: world happiness\nLoad in the world happiness dataset (whr_2023.csv). Look at the data dictionary provided. Identify which variable indicates the country’s happiness score.\nNote that there are many missing values (NA) in this data. If you want to compute a mean of a variable with missing values, you need to specify the na.rm = TRUE. If you need to, you can also use the drop_na() dplyr function to remove all rows with missing values (but this is not necessarily recommended).\n\nmean(c(1, 4, NA, 2))\n\n[1] NA\n\nmean(c(1, 4, NA, 2), na.rm = TRUE)\n\n[1] 2.333333\n\n\nConduct some explorations of the data using your dplyr and ggplot2 skills. Create at least one interesting polished plot. You are welcome to look at just one year, or even just one country!\nMake sure that your plot has a clear takeaway message. Remember that less is sometimes more: just because you can add a billion things to your plot, doesn’t mean that you should!\nOne idea: Look at Australia’s happiness score (life_ladder) over time."
+  },
+  {
+    "objectID": "solutions/03-ggplot2.html",
+    "href": "solutions/03-ggplot2.html",
+    "title": "Data visualization with ggplot2 (solutions)",
+    "section": "",
+    "text": "Let’s load in the gapminder dataset\n# load the tidyverse, and gapminder dataset using read_csv()\nlibrary(tidyverse)\ngapminder &lt;- read_csv(\"data/gapminder.csv\")\ngapminder\n\n# A tibble: 1,704 × 6\n   country     continent  year lifeExp      pop gdpPercap\n   &lt;chr&gt;       &lt;chr&gt;     &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;\n 1 Afghanistan Asia       1952    28.8  8425333      779.\n 2 Afghanistan Asia       1957    30.3  9240934      821.\n 3 Afghanistan Asia       1962    32.0 10267083      853.\n 4 Afghanistan Asia       1967    34.0 11537966      836.\n 5 Afghanistan Asia       1972    36.1 13079460      740.\n 6 Afghanistan Asia       1977    38.4 14880372      786.\n 7 Afghanistan Asia       1982    39.9 12881816      978.\n 8 Afghanistan Asia       1987    40.8 13867957      852.\n 9 Afghanistan Asia       1992    41.7 16317921      649.\n10 Afghanistan Asia       1997    41.8 22227415      635.\n# ℹ 1,694 more rows\nThe ggplot2 library is loaded as a part of the tidyverse.\nForeSITE"
+  },
+  {
+    "objectID": "solutions/03-ggplot2.html#using-ggplot2-to-visualize-data",
+    "href": "solutions/03-ggplot2.html#using-ggplot2-to-visualize-data",
+    "title": "Data visualization with ggplot2 (solutions)",
+    "section": "Using ggplot2 to visualize data",
+    "text": "Using ggplot2 to visualize data\nLet’s create our first visualization using ggplot2’s “layered grammar of graphics”.\nTo create a ggplot figure, you start by creating an empty ggplot2 canvas, to which you provide your dataset\n\nggplot(gapminder)\n\n\n\n\n\n\n\n\nThen you add (with +) a “geom_” layer. For a scatterplot, this is geom_point().\nInside your geom layer, you need to specify the aesthetics using aes(), such as the x- and y-coordinates of the points.\n\n# create a scatterplot of gdpPercap (x) against lifeExp (y)\nggplot(gapminder) + \n  geom_point(aes(x = gdpPercap, y = lifeExp))\n\n\n\n\n\n\n\n\n\nExercise\nCreate a ggplot scatterplot figure of population against life expectancy\n\nggplot(gapminder) + \n  geom_point(aes(x = pop, y = lifeExp))\n\n\n\n\n\n\n\n\n\n\nExercise\nRecreate the previous plot using only the data from the year 2007.\nHint: you can pipe the gapminder object into the ggplot function.\n\ngapminder |&gt; \n  filter(year == 2007) |&gt; \n  ggplot() + \n  geom_point(aes(x = pop, y = lifeExp))\n\n\n\n\n\n\n\ngapminder_2007 &lt;- gapminder |&gt; filter(year == 2007)\nggplot(gapminder_2007) + \n  geom_point(aes(x = pop, y = lifeExp))"
+  },
+  {
+    "objectID": "solutions/03-ggplot2.html#defining-ggplot2-aesthetics",
+    "href": "solutions/03-ggplot2.html#defining-ggplot2-aesthetics",
+    "title": "Data visualization with ggplot2 (solutions)",
+    "section": "Defining ggplot2 aesthetics",
+    "text": "Defining ggplot2 aesthetics\nWe’ve seen the x and y point aesthetics, but there are many others too.\nFor example, you can specify the color of the points using the color aesthetic:\n\n# use gapminder_2007 to create a scatterplot of gdpPercap (x) against lifeExp (y)\n# where color is based on continent\nggplot(gapminder_2007) + \n  geom_point(aes(x = gdpPercap, y = lifeExp, color = continent))\n\n\n\n\n\n\n\n\nTo specify a global aesthetic that does not depend on a column in your data, you need to specify it outside the aes() function.\n\n# use gapminder_2007 to create a scatterplot of gdpPercap (x) against lifeExp (y)\n# where all points are colored blue\nggplot(gapminder_2007) + \n  geom_point(aes(x = gdpPercap, y = lifeExp), color = \"blue\")\n\n\n\n\n\n\n\n\n\nExercise\nSpecify the shape aesthetic of each point in two ways:\n\nProvide a different shape for each continent\nMake all points “square”\n\n\n# 1\nggplot(gapminder_2007) + \n  geom_point(aes(x = gdpPercap, \n                 y = lifeExp, \n                 shape = continent))\n\n\n\n\n\n\n\n# 2 \nggplot(gapminder_2007) + \n  geom_point(aes(x = gdpPercap, \n                 y = lifeExp), \n             shape = \"square\")\n\n\n\n\n\n\n\n\n\n\nSpecifying transparency\nSometimes when you have a lot of data points, you might want to add some transparency. You can do this using the alpha argument. alpha takes values between 0 and 1. alpha = 1 is not transparent at all, and alpha = 0 is completely transparent.\n\n# add transparency to the 2007 scatterplot of gdpPercap (x) against lifeExp (y)\nggplot(gapminder_2007) + \n  geom_point(aes(x = gdpPercap, y = lifeExp), \n             alpha = 0.5)\n\n\n\n\n\n\n\n\n\n\nExercise\nRecreate the 2007 gdpPercap vs lifeExp plot in which you color by continent, size is determined by population, and the points have a transparency of 0.5.\n\nggplot(gapminder_2007) + \n  geom_point(aes(x = gdpPercap, y = lifeExp, \n                 color = continent, size = pop), \n             alpha = 0.5)"
+  },
+  {
+    "objectID": "solutions/03-ggplot2.html#line-plots",
+    "href": "solutions/03-ggplot2.html#line-plots",
+    "title": "Data visualization with ggplot2 (solutions)",
+    "section": "Line plots",
+    "text": "Line plots\nLet’s create a line plot of lifeExp by year for each country in the Americas.\n\n# create a line plot for each country in the Americas\ngapminder |&gt; \n  filter(continent == \"Americas\") |&gt; \n  ggplot() + \n  geom_line(aes(x = year, \n                y = lifeExp, \n                # if you want separate lines, you need to provide a group variable\n                group = country))"
+  },
+  {
+    "objectID": "solutions/03-ggplot2.html#exercise-4",
+    "href": "solutions/03-ggplot2.html#exercise-4",
+    "title": "Data visualization with ggplot2 (solutions)",
+    "section": "Exercise",
+    "text": "Exercise\nCompute the average life expectancy for each continent for each year, and then create a line plot of the average life expectancy for each continent over time.\n\ngapminder |&gt; \n  group_by(continent, year) |&gt; \n  summarize(mean_life_exp = mean(lifeExp)) |&gt; \n  ggplot() +\n  geom_line(aes(x = year, \n                y = mean_life_exp, \n                color = continent))\n\n`summarise()` has grouped output by 'continent'. You can override using the\n`.groups` argument."
+  },
+  {
+    "objectID": "solutions/03-ggplot2.html#boxplots",
+    "href": "solutions/03-ggplot2.html#boxplots",
+    "title": "Data visualization with ggplot2 (solutions)",
+    "section": "Boxplots",
+    "text": "Boxplots\nLet’s create some boxplots of lifeExp for each continent\n\n# create boxplots of the lifeExp for each continent\nggplot(gapminder) + \n  geom_boxplot(aes(x = continent, y = lifeExp))"
+  },
+  {
+    "objectID": "solutions/03-ggplot2.html#histograms",
+    "href": "solutions/03-ggplot2.html#histograms",
+    "title": "Data visualization with ggplot2 (solutions)",
+    "section": "Histograms",
+    "text": "Histograms\nLet’s create a histogram of lifeExp\n\n# create a histogram of lifeExp\nggplot(gapminder) + \n  geom_histogram(aes(x = lifeExp))\n\n`stat_bin()` using `bins = 30`. Pick better value with `binwidth`."
+  },
+  {
+    "objectID": "solutions/03-ggplot2.html#bar-charts",
+    "href": "solutions/03-ggplot2.html#bar-charts",
+    "title": "Data visualization with ggplot2 (solutions)",
+    "section": "Bar charts",
+    "text": "Bar charts\nYou can create a count bar chart, by providing a categorical (character/factor) variable as your x-aesthetic to geom_bar()\n\n# create a bar chart of the continent *counts*\nggplot(gapminder) +\n  geom_bar(aes(x = continent))\n\n\n\n\n\n\n\n\nIf you want to create bar charts where you specify the height of each bar based on a variable in your data, you need to use geom_col() instead of geom_bar().\n\n# create a bar chart of the average lifeExp for each continent using geom_col()\ngapminder |&gt;\n  group_by(continent) |&gt;\n  summarize(mean_life_exp = mean(lifeExp)) |&gt;\n  ggplot() +\n  geom_col(aes(x = continent, y = mean_life_exp))"
+  },
+  {
+    "objectID": "solutions/03-ggplot2.html#layering-geom_layers",
+    "href": "solutions/03-ggplot2.html#layering-geom_layers",
+    "title": "Data visualization with ggplot2 (solutions)",
+    "section": "Layering geom_layers",
+    "text": "Layering geom_layers\nYou can add multiple layers of geoms in the same plot.\n\n# (from the exercise above) compute the average lifeExp for each continent-year \n# combination, then create a line plot of the mean_life_exp over time for each \n# continent, and then \n# add the points on top of the line\ngapminder |&gt; \n  group_by(continent, year) |&gt; \n  summarize(mean_life_exp = mean(lifeExp)) |&gt; \n  ggplot(aes(x = year, \n             y = mean_life_exp, \n             color = continent)) +\n  geom_line() + \n  geom_point()\n\n`summarise()` has grouped output by 'continent'. You can override using the\n`.groups` argument."
+  },
+  {
+    "objectID": "solutions/03-ggplot2.html#getting-fancy-with-ggplot2",
+    "href": "solutions/03-ggplot2.html#getting-fancy-with-ggplot2",
+    "title": "Data visualization with ggplot2 (solutions)",
+    "section": "Getting fancy with ggplot2",
+    "text": "Getting fancy with ggplot2\n\nTransformations\nYou can apply log-scale transformations to your axis by adding a scale layer.\n\n# for the 2007 gdpPercap-lifeExp scatterplot colored by continent\n# add a log10 scale layer to the x-axis \nggplot(gapminder_2007) + \n  geom_point(aes(x = gdpPercap, \n                 y = lifeExp, \n                 color = continent)) + \n  scale_x_log10()\n\n\n\n\n\n\n\n\n\n\nLabels\nYou can clean the labels of your figure using the labs() function\n\n# take your previous plot, add nice labels using `labs()`\n# save the ggplot2 object as my_scatter\nmy_scatter &lt;- ggplot(gapminder_2007) + \n  geom_point(aes(x = gdpPercap, \n                 y = lifeExp, \n                 color = continent)) + \n  scale_x_log10() + \n  labs(x = \"GDP per capita\", y = \"Life expectancy\", title = \"GDP per cap vs life expectancy\")\nmy_scatter\n\n\n\n\n\n\n\n\n\n\nThemes\nYou can change the theme of your figure by adding a themes layer\n\n# try out a few themes layers: theme_classic(), theme_bw(), theme_dark()\nmy_scatter + theme_classic()\n\n\n\n\n\n\n\nmy_scatter + theme_bw()\n\n\n\n\n\n\n\nmy_scatter + theme_dark()\n\n\n\n\n\n\n\nggplot(gapminder_2007) + \n  geom_point(aes(x = gdpPercap, \n                 y = lifeExp, \n                 color = continent)) + \n  scale_x_log10() + \n  labs(x = \"GDP per capita\", y = \"Life expectancy\", title = \"GDP per cap vs life expectancy\") + \n  theme_dark()\n\n\n\n\n\n\n\n\n\n\nFaceted grids\nYou can create a grid of plots using facet_wrap().\n\n# create a line plot of lifeExp over time for each country, separately for each continent\nggplot(gapminder) + \n  geom_line(aes(x = year, y = lifeExp, group = country),\n            alpha = 0.2) + \n  facet_wrap(~continent, ncol = 2)\n\n\n\n\n\n\n\n\n\n\nProject exercise: world happiness\nLoad in the world happiness dataset (whr_2023.csv). Look at the data dictionary provided. Identify which variable indicates the country’s happiness score.\nNote that there are many missing values (NA) in this data. If you want to compute a mean of a variable with missing values, you need to specify the na.rm = TRUE. If you need to, you can also use the drop_na() dplyr function to remove all rows with missing values (but this is not necessarily recommended).\n\nmean(c(1, 4, NA, 2))\n\n[1] NA\n\nmean(c(1, 4, NA, 2), na.rm = TRUE)\n\n[1] 2.333333\n\n\nConduct some explorations of the data using your dplyr and ggplot2 skills. Create at least one interesting polished plot. You are welcome to look at just one year, or even just one country!\nMake sure that your plot has a clear takeaway message. Remember that less is sometimes more: just because you can add a billion things to your plot, doesn’t mean that you should!\nOne idea: Look at Australia’s happiness score (life_ladder) over time.\n\nhappiness &lt;- read_csv(\"data/whr_2023.csv\")\n\nRows: 2970 Columns: 11\n── Column specification ────────────────────────────────────────────────────────\nDelimiter: \",\"\nchr  (1): country_name\ndbl (10): year, life_ladder, log_GDP_per_capita, social_support, healthy_lif...\n\nℹ Use `spec()` to retrieve the full column specification for this data.\nℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.\n\nhappiness\n\n# A tibble: 2,970 × 11\n   country_name  year life_ladder log_GDP_per_capita social_support\n   &lt;chr&gt;        &lt;dbl&gt;       &lt;dbl&gt;              &lt;dbl&gt;          &lt;dbl&gt;\n 1 Afghanistan   2005       NA                 NA            NA    \n 2 Afghanistan   2006       NA                 NA            NA    \n 3 Afghanistan   2007       NA                 NA            NA    \n 4 Afghanistan   2008        3.72               7.35          0.451\n 5 Afghanistan   2009        4.40               7.51          0.552\n 6 Afghanistan   2010        4.76               7.61          0.539\n 7 Afghanistan   2011        3.83               7.58          0.521\n 8 Afghanistan   2012        3.78               7.66          0.521\n 9 Afghanistan   2013        3.57               7.68          0.484\n10 Afghanistan   2014        3.13               7.67          0.526\n# ℹ 2,960 more rows\n# ℹ 6 more variables: healthy_life_expectancy_at_birth &lt;dbl&gt;,\n#   freedom_to_make_life_choices &lt;dbl&gt;, generosity &lt;dbl&gt;,\n#   perceptions_of_corruption &lt;dbl&gt;, positive_affect &lt;dbl&gt;,\n#   negative_affect &lt;dbl&gt;\n\n\n\nhappiness |&gt;\n  filter(country_name == \"Australia\", year &gt;= 2010) |&gt;\n  ggplot() +\n  geom_line(aes(x = year, y = life_ladder),\n             col = \"firebrick\", linewidth = 1.1) +\n  theme_classic() +\n  labs(x = \"Year\", y = \"Happiness score\", title = \"Australia's decreasing happiness trend\")"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Welcome!",
+    "section": "",
+    "text": "GSRM 2025 cohort\nThis workshop is designed for beginners who are new to R and coding! I will introduce data visualization and analysis using ggplot2\nThe University of Utah"
+  },
+  {
+    "objectID": "index.html#about-the-workshop",
+    "href": "index.html#about-the-workshop",
+    "title": "Welcome!",
+    "section": "About the workshop",
+    "text": "About the workshop"
+  },
+  {
+    "objectID": "01-r.html#cran-version",
+    "href": "01-r.html#cran-version",
+    "title": "Getting R",
+    "section": "CRAN version",
+    "text": "CRAN version\nFor this version just go to your R console and type:\ninstall.packages(\"netdiffuseR\")"
+  },
+  {
+    "objectID": "01-r.html#github-version",
+    "href": "01-r.html#github-version",
+    "title": "Getting R",
+    "section": "Github version",
+    "text": "Github version\nFor the github version you will need to have installed the devtools R package which allows to build netdiffuseR from source1. This can be done in the following steps:\ninstall.packages(\"devtools\") # If you don't have devtools already!\ndevtools::install_github(\"USCCANA/netdiffuseR\")"
+  },
+  {
+    "objectID": "01-r.html#footnotes",
+    "href": "01-r.html#footnotes",
+    "title": "Getting R",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nBuilding an R package from source means that you will use R CMD INSTALL utility on the command line of your operating system. Depending on the R package, it may require having a C/C++ compiler such as gcc g++ or clang. This makes installing packages from source code a bit harder, that’s why we recommend getting the CRAN version which is already compiled and ready for your operating system.↩︎"
+  }
+]

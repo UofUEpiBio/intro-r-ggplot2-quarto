@@ -5,8 +5,8 @@ editor_options:
   chunk_output_type: console
 embed-resources: true
 author:
-  - Rebecca Barter, Ph.D. (original author)
-  - George G. Vega Yon, Ph.D. (adapted by)
+  - <a href="https://www.rebeccabarter.com">Rebecca Barter, Ph.D. (original author)</a>
+  - <a href="https://ggvy.cl"><b>George G. Vega Yon, Ph.D. (adapted by)</b></a>
 ---
 
 

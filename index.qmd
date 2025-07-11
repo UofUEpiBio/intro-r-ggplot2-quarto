@@ -1,0 +1,11 @@
+---
+title: "Welcome!"
+date: 2025-07-11
+date-modified: 2025-07-11
+---
+
+![GSRM 2025 cohort](https://medicine.utah.edu/sites/g/files/zrelqx466/files/styles/wide_phone/public/media/images/2025/group-photo.jpg?h=e2f30826&itok=aAoc1FBl){width=auto alt="GSRM 2025 cohort" style="display: block; margin: auto;"}
+
+This workshop is designed for beginners who are new to R and coding! I will introduce data visualization and analysis using ggplot2
+
+## About the workshop
