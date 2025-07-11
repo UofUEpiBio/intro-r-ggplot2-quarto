@@ -1,5 +1,5 @@
 ---
-title: 'PHS 7045 Advanced Programming<br>Example with Quarto'
+title: Writing Scientific Documents with Quarto
 author: <a href="https://ggvy.cl"><b>George G. Vega Yon, Ph.D.</b></a><br>george.vegayon@utah.edu<br><br>University of Utah
 date: January 12, 2023
 format: 
@@ -8,6 +8,15 @@ format:
     code-fold: show
     toc: true
 ---
+
+[Quarto](https://quarto.org) is a modern publishing system developed by Posit (formerly RStudio) that provides a robust framework for creating all sorts of documents, including scientific papers, books, websites, and presentations. Quarto can work with R, Python, Julia, and Observable. Some great applications of Quarto include:
+
+- Creating lab reports to share with your team.
+- Create websites (like this workshop).
+- Writing books and scientific papers.
+- Creating presentations that are heavy on coding.
+
+Quarto is built on top of [Pandoc](https://pandoc.org/), which is a universal document converter that can convert between many different formats, including Markdown, HTML, LaTeX, and PDF. Quarto uses Pandoc to convert your documents into the desired format.
 
 ## Quarto files
 

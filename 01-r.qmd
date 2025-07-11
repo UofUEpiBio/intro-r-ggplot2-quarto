@@ -6,22 +6,51 @@ date: 2025-06-24
 date-modified: 2025-07-11
 ---
 
+## The most important thing about R
+
+Getting help (and reading the manual) is *THE MOST IMPORTANT* thing you should know about. For example, if you want to read the manual (help file) of the `read.csv` function, you can type either of these:
+
+```r
+?read.csv
+?"read.csv"
+help(read.csv)
+help("read.csv")
+```
+
+If you are not fully aware of what is the name of the function, you can always use the *fuzzy search*
+
+```r
+help.search("linear regression")
+??"linear regression"
+```
+
+## Installing packages in R
+
+R features a large collection of packages that extend its functionality. One of the keys to R's success is the Comprehensive R Archive Network (CRAN). This large repository with mirrors around the world contain the majority of R packages. All packages in CRAN are peer-reviewed and tested for quality (which is not the case with other programming languages). You can access CRAN at <https://cran.r-project.org>.
+
+Another key source of packages is Bioconductor, which is a repository of packages for bioinformatics and computational biology. You can access it at <https://bioconductor.org>. Bioconductor packages are also peer-reviewed and tested for quality.
+
+To install a package, you can use the `install.packages` function. For example, to install the `ggplot2` package, you can type:
+
+```r
+install.packages("ggplot2")
+```
+
+In this workshop, we will use the `tidyverse` package, which is a collection of packages for data science. **Installing tidyverse takes a while, so we only do it once**. It is already installed in your Posit Cloud account. We always install R packages once, and then we load them with the `library` function. For example, to load the `ggplot2` package, you can type:
+
+```r
+library(ggplot2)
+```
+
+::: {.callout-tip}
+Note that we used double quotes around the package name in `install.packages`, but we used no quotes in `library`. This is because `install.packages` is a function that takes a string as an argument, while `library` is a function that takes a package name as an argument.
+:::
+
+As a final note for learning about R packages, you should take a look at CRAN's Task Views at <https://cran.r-project.org/web/views/>. These are curated lists of packages for specific tasks, such as data visualization, machine learning, and bioinformatics. As well as look at packages' documentation, which usually includes one or more vignettes, which are long-form documents that explain how to use the package.
+
+## Programming in R
+
 Some common tasks in R
-
-0.  Getting help (and reading the manual) is *THE MOST IMPORTANT* thing you should know about. For example, if you want to read the manual (help file) of the `read.csv` function, you can type either of these:
-
-    ```r
-    ?read.csv
-    ?"read.csv"
-    help(read.csv)
-    help("read.csv")
-    ```
-    If you are not fully aware of what is the name of the function, you can always use the *fuzzy search*
-    ```r
-    help.search("linear regression")
-    ??"linear regression"
-    ```
-    
     
 
 1.  In R you can create new objects by either using the assign operator (`<-`) or the equal sign `=`, for example, the following 2 are equivalent:
@@ -99,6 +128,8 @@ Some common tasks in R
     }
     ```
 
+## Random number generation in R
+
 5.  R has a very nice set of pseudo random number generation functions. In general, distribution functions have the following name structure:
 
     a.  Random Number Generation: `r[name-of-the-distribution]`, e.g. `rnorm` for normal, `runif` for uniform.
@@ -121,20 +152,22 @@ Some common tasks in R
     hist(x)
     
     # 100,000 N(10,25) numbers
-    x <- rnorm(1e5, mean = 10, sd = 5)
-    hist(x)
+    rnorm(1e5, mean = 10, sd = 5) |>
+      hist()
     
     # 100,000 Poisson(5) numbers
-    x <- rpois(1e5, lambda = 5)
-    hist(x)
+    rpois(1e5, lambda = 5) |>
+      hist()
     
     # 100,000 rexp(5) numbers
-    x <- rexp(1e5, 5)
-    hist(x)
+    rexp(1e5, 5) |>
+      hist()
     ```
     
     More distributions available at `??Distributions`.
 
-For a nice intro to R, take a look at ["The Art of R Programming" by Norman Matloff](https://nostarch.com/artofr.htm). For more advanced users, take a look at ["Advanced R" by Hadley Wickham](http://adv-r.had.co.nz/).
-    
-    
+::: {.callout-tip title="Pipes in R"}
+After the R package magrittr introduced the pipe operator `%>%`, it has become a common practice to use the pipe operator to chain functions together. This allows for a more readable and concise code. Here, the last three sampling functions used the *modern* pipe operator which was introduced in R version 4.1.0, `|>`. We will see this often in the workshop, but you can also use the `%>%` operator from the `magrittr` package.
+:::
+
+For a nice intro to R, take a look at ["The Art of R Programming" by Norman Matloff](https://nostarch.com/artofr.htm) (outdated) and ["R for Data Science"](https://r4ds.hadley.nz/). For more advanced users, take a look at ["Advanced R" by Hadley Wickham](http://adv-r.had.co.nz/).
