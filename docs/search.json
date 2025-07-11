@@ -4,7 +4,7 @@
     "href": "02-quarto.html",
     "title": "PHS 7045 Advanced ProgrammingExample with Quarto",
     "section": "",
-    "text": "These are plain-text (not binary) files\n\n\n---\ntitle: \"Hello World\"\nauthor: \"Truly Yours\"\ndate: \"`r Sys.Date()`\"\nformat: html\n---\n\n# First level header\n\n## Second level header\n\nSome text that goes along with the document\n\nCode chunks can have tags, like the one here\n\n\n```{r first-code-chunk}\nsqrt(pi)\n```\n\n\nAnd also, they can have options. For example, if you don't want the source code\nto be printed out, you add the option `echo: false` as in the following code\nchunk\n\n\n```{r second-code-chunk}\n#| echo: false\nplot(USArrests)\n```\nThe University of Utah"
+    "text": "These are plain-text (not binary) files\n\n\n---\ntitle: \"Hello World\"\nauthor: \"Truly Yours\"\ndate: \"`r Sys.Date()`\"\nformat: html\n---\n\n# First level header\n\n## Second level header\n\nSome text that goes along with the document\n\nCode chunks can have tags, like the one here\n\n\n```{r first-code-chunk}\nsqrt(pi)\n```\n\n\nAnd also, they can have options. For example, if you don't want the source code\nto be printed out, you add the option `echo: false` as in the following code\nchunk\n\n\n```{r second-code-chunk}\n#| echo: false\nplot(USArrests)\n```"
   },
   {
     "objectID": "02-quarto.html#quarto-files",
@@ -58,9 +58,9 @@
   {
     "objectID": "01-r.html",
     "href": "01-r.html",
-    "title": "Getting R",
+    "title": "A gentle Quick n’ Dirty Introduction to R",
     "section": "",
-    "text": "To install R just follow the instructions available at http://cran.r-project.org\nThe University of Utah"
+    "text": "Some common tasks in R\n\nGetting help (and reading the manual) is THE MOST IMPORTANT thing you should know about. For example, if you want to read the manual (help file) of the read.csv function, you can type either of these:\n?read.csv\n?\"read.csv\"\nhelp(read.csv)\nhelp(\"read.csv\")\nIf you are not fully aware of what is the name of the function, you can always use the fuzzy search\nhelp.search(\"linear regression\")\n??\"linear regression\"\nIn R you can create new objects by either using the assign operator (&lt;-) or the equal sign =, for example, the following 2 are equivalent:\na &lt;- 1\na =  1\nHistorically the assign operator is the most common used.\nR has several type of objects, the most basic structures in R are vectors, matrix, list, data.frame. Here is an example creating several of these (each line is enclosed with parenthesis so that R prints the resulting element):\n\n(a_vector     &lt;- 1:9)\n\n[1] 1 2 3 4 5 6 7 8 9\n\n(another_vect &lt;- c(1, 2, 3, 4, 5, 6, 7, 8, 9))\n\n[1] 1 2 3 4 5 6 7 8 9\n\n(a_string_vec &lt;- c(\"I\", \"like\", \"netdiffuseR\"))\n\n[1] \"I\"           \"like\"        \"netdiffuseR\"\n\n(a_matrix     &lt;- matrix(a_vector, ncol = 3))\n\n     [,1] [,2] [,3]\n[1,]    1    4    7\n[2,]    2    5    8\n[3,]    3    6    9\n\n(a_string_mat &lt;- matrix(letters[1:9], ncol=3)) # Matrices can be of strings too\n\n     [,1] [,2] [,3]\n[1,] \"a\"  \"d\"  \"g\" \n[2,] \"b\"  \"e\"  \"h\" \n[3,] \"c\"  \"f\"  \"i\" \n\n(another_mat  &lt;- cbind(1:4, 11:14)) # The `cbind` operator does \"column bind\"\n\n     [,1] [,2]\n[1,]    1   11\n[2,]    2   12\n[3,]    3   13\n[4,]    4   14\n\n(another_mat2 &lt;- rbind(1:4, 11:14)) # The `rbind` operator does \"row bind\"\n\n     [,1] [,2] [,3] [,4]\n[1,]    1    2    3    4\n[2,]   11   12   13   14\n\n(a_string_mat &lt;- matrix(letters[1:9], ncol = 3))\n\n     [,1] [,2] [,3]\n[1,] \"a\"  \"d\"  \"g\" \n[2,] \"b\"  \"e\"  \"h\" \n[3,] \"c\"  \"f\"  \"i\" \n\n(a_list       &lt;- list(a_vector, a_matrix))\n\n[[1]]\n[1] 1 2 3 4 5 6 7 8 9\n\n[[2]]\n     [,1] [,2] [,3]\n[1,]    1    4    7\n[2,]    2    5    8\n[3,]    3    6    9\n\n(another_list &lt;- list(my_vec = a_vector, my_mat = a_matrix)) # same but with names!\n\n$my_vec\n[1] 1 2 3 4 5 6 7 8 9\n\n$my_mat\n     [,1] [,2] [,3]\n[1,]    1    4    7\n[2,]    2    5    8\n[3,]    3    6    9\n\n# Data frames can have multiple types of elements, it is a collection of lists\n(a_data_frame &lt;- data.frame(x = 1:10, y = letters[1:10]))\n\n    x y\n1   1 a\n2   2 b\n3   3 c\n4   4 d\n5   5 e\n6   6 f\n7   7 g\n8   8 h\n9   9 i\n10 10 j\n\n\nDepending on the type of object, we can access to its components using indexing:\n\na_vector[1:3] # First 3 elements\n\n[1] 1 2 3\n\na_string_vec[3] # Third element\n\n[1] \"netdiffuseR\"\n\na_matrix[1:2, 1:2] # A sub matrix\n\n     [,1] [,2]\n[1,]    1    4\n[2,]    2    5\n\na_matrix[,3] # Third column\n\n[1] 7 8 9\n\na_matrix[3,] # Third row\n\n[1] 3 6 9\n\na_string_mat[1:6] # First 6 elements of the matrix. R stores matrices by column.\n\n[1] \"a\" \"b\" \"c\" \"d\" \"e\" \"f\"\n\n# These three are equivalent\nanother_list[[1]]\n\n[1] 1 2 3 4 5 6 7 8 9\n\nanother_list$my_vec\n\n[1] 1 2 3 4 5 6 7 8 9\n\nanother_list[[\"my_vec\"]]\n\n[1] 1 2 3 4 5 6 7 8 9\n\n# Data frames are just like lists\na_data_frame[[1]]\n\n [1]  1  2  3  4  5  6  7  8  9 10\n\na_data_frame[,1]\n\n [1]  1  2  3  4  5  6  7  8  9 10\n\na_data_frame[[\"x\"]]\n\n [1]  1  2  3  4  5  6  7  8  9 10\n\na_data_frame$x\n\n [1]  1  2  3  4  5  6  7  8  9 10\n\n\nControl-flow statements\n\n# The oldfashion forloop\nfor (i in 1:10) {\n  print(paste(\"I'm step\", i, \"/\", 10))\n}\n\n[1] \"I'm step 1 / 10\"\n[1] \"I'm step 2 / 10\"\n[1] \"I'm step 3 / 10\"\n[1] \"I'm step 4 / 10\"\n[1] \"I'm step 5 / 10\"\n[1] \"I'm step 6 / 10\"\n[1] \"I'm step 7 / 10\"\n[1] \"I'm step 8 / 10\"\n[1] \"I'm step 9 / 10\"\n[1] \"I'm step 10 / 10\"\n\n# A nice ifelse\n\nfor (i in 1:10) {\n\n  if (i %% 2) # Modulus operand\n    print(paste(\"I'm step\", i, \"/\", 10, \"(and I'm odd)\"))\n  else\n    print(paste(\"I'm step\", i, \"/\", 10, \"(and I'm even)\"))\n\n}\n\n[1] \"I'm step 1 / 10 (and I'm odd)\"\n[1] \"I'm step 2 / 10 (and I'm even)\"\n[1] \"I'm step 3 / 10 (and I'm odd)\"\n[1] \"I'm step 4 / 10 (and I'm even)\"\n[1] \"I'm step 5 / 10 (and I'm odd)\"\n[1] \"I'm step 6 / 10 (and I'm even)\"\n[1] \"I'm step 7 / 10 (and I'm odd)\"\n[1] \"I'm step 8 / 10 (and I'm even)\"\n[1] \"I'm step 9 / 10 (and I'm odd)\"\n[1] \"I'm step 10 / 10 (and I'm even)\"\n\n# A while\ni &lt;- 10\nwhile (i &gt; 0) {\n  print(paste(\"I'm step\", i, \"/\", 10))\n  i &lt;- i - 1\n}\n\n[1] \"I'm step 10 / 10\"\n[1] \"I'm step 9 / 10\"\n[1] \"I'm step 8 / 10\"\n[1] \"I'm step 7 / 10\"\n[1] \"I'm step 6 / 10\"\n[1] \"I'm step 5 / 10\"\n[1] \"I'm step 4 / 10\"\n[1] \"I'm step 3 / 10\"\n[1] \"I'm step 2 / 10\"\n[1] \"I'm step 1 / 10\"\n\n\nR has a very nice set of pseudo random number generation functions. In general, distribution functions have the following name structure:\n\nRandom Number Generation: r[name-of-the-distribution], e.g. rnorm for normal, runif for uniform.\nDensity function: d[name-of-the-distribution], e.g. dnorm for normal, dunif for uniform.\nCumulative Distribution Function (CDF): p[name-of-the-distribution], e.g. pnorm for normal, punif for uniform.\nInverse (quantile) function: q[name-of-the-distribution], e.g. qnorm for the normal, qunif for the uniform.\n\nHere are some examples:\n\n# To ensure reproducibility\nset.seed(1231)\n\n# 100,000 Unif(0,1) numbers\nx &lt;- runif(1e5)\nhist(x)\n\n\n\n\n\n\n\n# 100,000 N(0,1) numbers\nx &lt;- rnorm(1e5)\nhist(x)\n\n\n\n\n\n\n\n# 100,000 N(10,25) numbers\nx &lt;- rnorm(1e5, mean = 10, sd = 5)\nhist(x)\n\n\n\n\n\n\n\n# 100,000 Poisson(5) numbers\nx &lt;- rpois(1e5, lambda = 5)\nhist(x)\n\n\n\n\n\n\n\n# 100,000 rexp(5) numbers\nx &lt;- rexp(1e5, 5)\nhist(x)\n\n\n\n\n\n\n\n\nMore distributions available at ??Distributions.\n\nFor a nice intro to R, take a look at “The Art of R Programming” by Norman Matloff. For more advanced users, take a look at “Advanced R” by Hadley Wickham.\n\n\n\n\nThe University of Utah"
   },
   {
     "objectID": "hello-world.html",
@@ -221,14 +221,14 @@
     "href": "index.html",
     "title": "Welcome!",
     "section": "",
-    "text": "GSRM 2025 cohort\nThis workshop is designed for beginners who are new to R and coding! I will introduce data visualization and analysis using ggplot2\nThe University of Utah"
+    "text": "GSRM 2025 cohort"
   },
   {
     "objectID": "index.html#about-the-workshop",
     "href": "index.html#about-the-workshop",
     "title": "Welcome!",
     "section": "About the workshop",
-    "text": "About the workshop"
+    "text": "About the workshop\nThis workshop is designed as a quick introduction to the R programming language via ggplot2 and quarto. The R programming language is widely used in the scientific community, with special emphasis on data analysis and visualization. The ggplot2 R package is a powerful data-visualization tool that makes using R pleasant. And quarto is a modern publishing system that allows you to create beautiful documents, presentations, and websites using R.\nThe workshop assumes the attendees will have reviewed the contents of the following materials:\n\nPosit cloud essentials (link).\nChapter 1 of the book “R for Data Science” (Hadley Wickham and others) (link).\nGet started with Quarto (link).\n\nAll the workshop materials are available at the GitHub repository."
   },
   {
     "objectID": "01-r.html#cran-version",
@@ -250,5 +250,33 @@
     "title": "Getting R",
     "section": "Footnotes",
     "text": "Footnotes\n\n\nBuilding an R package from source means that you will use R CMD INSTALL utility on the command line of your operating system. Depending on the R package, it may require having a C/C++ compiler such as gcc g++ or clang. This makes installing packages from source code a bit harder, that’s why we recommend getting the CRAN version which is already compiled and ready for your operating system.↩︎"
+  },
+  {
+    "objectID": "index.html#getting-r",
+    "href": "index.html#getting-r",
+    "title": "Welcome!",
+    "section": "Getting R",
+    "text": "Getting R\nTo install R just follow the instructions available at http://cran.r-project.org"
+  },
+  {
+    "objectID": "index.html#getting-rstudio",
+    "href": "index.html#getting-rstudio",
+    "title": "Welcome!",
+    "section": "Getting RStudio",
+    "text": "Getting RStudio\nRStudio is the most popular Integrated Development Environment (IDE) for R that is developed by the company of the same name. While having RStudio is not a requirement for using netdiffuseR, it is highly recommended.\nTo get RStudio just visit https://www.rstudio.com/products/rstudio/download/."
+  },
+  {
+    "objectID": "index.html#funding",
+    "href": "index.html#funding",
+    "title": "Welcome!",
+    "section": "Funding",
+    "text": "Funding\nThe workshop was prepared as part of the Genomics Summer Research for Magnificents (GSRM) program at the University of Utah, with support from University of Utah’s DELPHI program."
+  },
+  {
+    "objectID": "index.html#ai-disclaimer",
+    "href": "index.html#ai-disclaimer",
+    "title": "Welcome!",
+    "section": "AI Disclaimer",
+    "text": "AI Disclaimer\nThe contents in this project are a mix of original work and AI-generated content. Most of the original content is authored by Dr Rebecca Barter, with adaptations by Dr George G. Vega Yon. Particularly, this repository."
   }
 ]

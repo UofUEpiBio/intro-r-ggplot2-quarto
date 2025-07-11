@@ -6,6 +6,32 @@ date-modified: 2025-07-11
 
 ![GSRM 2025 cohort](https://medicine.utah.edu/sites/g/files/zrelqx466/files/styles/wide_phone/public/media/images/2025/group-photo.jpg?h=e2f30826&itok=aAoc1FBl){width=auto alt="GSRM 2025 cohort" style="display: block; margin: auto;"}
 
-This workshop is designed for beginners who are new to R and coding! I will introduce data visualization and analysis using ggplot2
-
 ## About the workshop
+
+This workshop is designed as a quick introduction to the [R](https://r-project.org) programming language via [ggplot2](https://ggplot2.tidyverse.org/) and [quarto](https://quarto.org/). The R programming language is widely used in the scientific community, with special emphasis on data analysis and visualization. The ggplot2 R package is a powerful data-visualization tool that makes using R pleasant. And quarto is a modern publishing system that allows you to create beautiful documents, presentations, and websites using R.
+
+The workshop assumes the attendees will have reviewed the contents of the following materials:
+
+- Posit cloud essentials ([link](https://www.youtube.com/watch?v=-fzwm4ZhVQQ)).
+- Chapter 1 of the book “R for Data Science” (Hadley Wickham and others) ([link](https://r4ds.hadley.nz/data-visualize.html)).
+- Get started with Quarto ([link](https://www.youtube.com/watch?v=_f3latmOhew)).
+
+All the workshop materials are available at the [GitHub repository](https://github.com/UofUEpiBio/intro-r-ggplot2-quarto){target="_blank"}.
+
+## Getting R
+
+To install R just follow the instructions available at http://cran.r-project.org
+
+## Getting RStudio
+
+RStudio is the most popular Integrated Development Environment (IDE) for R that is developed by the company of the same name. While having RStudio is not a requirement for using netdiffuseR, it is highly recommended.
+
+To get RStudio just visit https://www.rstudio.com/products/rstudio/download/.
+
+## Funding
+
+The workshop was prepared as part of the [Genomics Summer Research for Magnificents (GSRM)](https://medicine.utah.edu/pediatrics/research/education/gsrm) program at the University of Utah, with support from University of Utah's [DELPHI program](https://uofuhealth.utah.edu/delphi-data-science-initiative). 
+
+## AI Disclaimer
+
+The contents in this project are a mix of original work and AI-generated content. Most of the original content is authored by [Dr Rebecca Barter](https://rebeccabarter.com), with adaptations by [Dr George G. Vega Yon](https://ggvy.cl). Particularly, [this repository](https://github.com/UofUDELPHI/2024-08-29-Intro_R/tree/cc5afb22f78eba8c020390c9186096e7b69b9540).

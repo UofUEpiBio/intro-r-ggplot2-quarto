@@ -5,7 +5,7 @@ project:
 
 website:
   title: "Data visualization using Quarto and ggplot2"
-  body-footer: <text style="text-align:center">The University of Utah</text>
+  body-footer: <div style="text-align:center">The University of Utah</div>
   repo-url: https://github.com/UofUEpiBio/intro-r-ggplot2-quarto
   repo-actions: [edit, source]
   navbar:
